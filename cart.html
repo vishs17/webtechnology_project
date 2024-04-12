@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart</title>
+  <style>
+    body {
+      padding: 20px;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+
+    h1 {
+      font-weight: 100;
+    }
+
+    .search-bar {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-bar label {
+      margin-right: 10px;
+      font-size: 16px;
+    }
+
+    .search-bar input {
+      padding: 8px;
+      font-size: 16px;
+    }
+
+    .shopping-cart {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .column-labels {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 15px;
+      margin-bottom: 15px;
+    }
+
+    .product {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+
+    .product-image {
+      flex: 1;
+      max-width: 100px;
+      margin-right: 20px;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: auto;
+    }
+
+    .product-details {
+      flex: 2;
+    }
+
+    .product-title {
+      font-weight: bold;
+    }
+
+    .product-price, .product-quantity, .product-line-price {
+      flex: 1;
+      text-align: right;
+    }
+
+    .totals {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    .totals-item {
+      width: 100%;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .checkout {
+      align-self: flex-end;
+      margin-top: 20px;
+      padding: 6px 25px;
+      background-color:  #e2c76c;
+      color: #fff;
+      font-size: 25px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    .checkout:hover {
+      background-color: #494;
+    }
+
+    /* Add styles for sections */
+    .section {
+      padding: 20px;
+      margin-top: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .section h2 {
+      margin-top: 0;
+    }
+
+    /* Style for navigation links */
+    .navigation {
+      margin-bottom: 20px;
+    }
+
+    .navigation a {
+      margin-right: 20px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .navigation a:hover {
+      color:  #e2c76c;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Shopping Cart</h1>
+
+  <div class="navigation">
+    <a class="scroll-section" href="#guitars">Guitars</a>
+    <a class="scroll-section" href="#pianos">Pianos</a>
+    <a class="scroll-section" href="#drums">Drums</a>
+    <a class="scroll-section" href="#accessories">Accessories</a>
+  </div>
+
+  <div class="search-bar">
+    <label for="brandSearch">Search by Brand:</label>
+    <input type="text" id="brandSearch" oninput="filterProducts()">
+  </div>
+
+  <!-- Guitars Section -->
+  <div id="guitars" class="section">
+    <h2>Guitars</h2>
+  
+    <div class="product" data-brand="Yamaha">
+        <div class="product-image">
+          <img src="C:\Users\BHUMIKA\Desktop\WT Project\image\Yamaha YAMAHA F 370 NATURAL - CHITARRA ACUSTICA.jpg">
+        </div>
+        <div class="product-details">
+          <div class="product-title">Yamaha F370</div>
+        </div>
+        <div class="product-price">450.99</div>
+        <div class="product-quantity">
+          <input type="number" value="0" min="0">
+        </div>
+        <div class="product-line-price">0.00</div>
+      </div>
+  
+      <div class="product" data-brand="Ibanez">
+        <div class="product-image">
+          <img src="C:\Users\BHUMIKA\Desktop\WT Project\image\Ibanez GRGA 6 String Solid-Body Electric Guitar, Right, Black Night, Full (GRGA120BKN).jpg">
+        </div>
+        <div class="product-details">
+          <div class="product-title">Ibanez GRGA</div>
+        </div>
+        <div class="product-price">999.99</div>
+        <div class="product-quantity">
+          <input type="number" value="0" min="0">
+        </div>
+        <div class="product-line-price">0.00</div>
+      </div>
+  
+      <div class="product" data-brand="Alvarez">
+          <div class="product-image">
+            <img src="C:\Users\BHUMIKA\Desktop\WT Project\image\AF70ce Shadowburst 2024 - Alvarez Guitars.jpg">
+          </div>
+          <div class="product-details">
+            <div class="product-title">Alvarez</div>
+          </div>
+          <div class="product-price">499.99</div>
+          <div class="product-quantity">
+            <input type="number" value="0" min="0">
+          </div>
+          <div class="product-line-price">0.00</div>
+        </div>
+  </div>
+
+  <!-- Pianos Section -->
+  <div id="pianos" class="section">
+    <h2>Piano</h2>
+   
+    <div class="product" data-brand="Yamaha">
+        <div class="product-image">
+          <img src="C:\Users\BHUMIKA\Desktop\WT Project\image\P Series - Overview - Yamaha - United States.jpg">
+        </div>
+        <div class="product-details">
+          <div class="product-title">Yamaha P series</div>
+        </div>
+        <div class="product-price">569.99</div>
+        <div class="product-quantity">
+          <input type="number" value="0" min="0">
+        </div>
+        <div class="product-line-price">0.00</div>
+      </div>
+  
+      <div class="product" data-brand="Casio">
+        <div class="product-image">
+          <img src="C:\Users\BHUMIKA\Desktop\WT Project\image\Casio CTS200BK Black.jpeg">
+        </div>
+        <div class="product-details">
+          <div class="product-title">Casio CTS200BK</div>
+        </div>
+        <div class="product-price">479.99</div>
+        <div class="product-quantity">
+          <input type="number" value="0" min="0">
+        </div>
+        <div class="product-line-price">0.00</div>
+      </div>
+  
+      <div class="product" data-brand="YAMAHA">
+          <div class="product-image">
+            <img src="C:\Users\BHUMIKA\Desktop\WT Project\image\Yamaha Yamaha Pss-F30 Portable Keyboard in Black.jpeg">
+          </div>
+          <div class="product-details">
+            <div class="product-title">Yamaha Pss-F50</div>
+          </div>
+          <div class="product-price">459.99</div>
+          <div class="product-quantity">
+            <input type="number" value="0" min="0">
+          </div>
+          <div class="product-line-price">0.00</div>
+        </div>
+  </div>
+
+  <!-- Drums Section -->
+  <div id="drums" class="section">
+    <h2>Drums</h2>
+    
+       
+        <div class="product" data-brand="Yamaha">
+            <div class="product-image">
+              <img src="C:\Users\BHUMIKA\Desktop\WT Project\image\Pearl Export EXX 5-Piece Drum Set - 22_14SD_16FT_13_12, Hardwa___.jpeg">
+            </div>
+            <div class="product-details">
+              <div class="product-title">Pearl Export EXX 830 Series</div>
+            </div>
+            <div class="product-price">999.99</div>
+            <div class="product-quantity">
+              <input type="number" value="0" min="0">
+            </div>
+            <div class="product-line-price">0.00</div>
+          </div>
+      
+          <div class="product" data-brand="Casio">
+            <div class="product-image">
+              <img src="C:\Users\BHUMIKA\Desktop\WT Project\image\Mapex Armory 6-piece Studioease Fast Tom Shell Pack - Ocean Sunset - Sweetwater Exclusive.jpg">
+            </div>
+            <div class="product-details">
+              <div class="product-title">Mapex Armory</div>
+            </div>
+            <div class="product-price">4509.99</div>
+            <div class="product-quantity">
+              <input type="number" value="0" min="0">
+            </div>
+            <div class="product-line-price">0.00</div>
+          </div>
+      
+          <div class="product" data-brand="YAMAHA">
+              <div class="product-image">
+                <img src="C:\Users\BHUMIKA\Desktop\WT Project\image\Pacific PDP Concept Maple 7-Piece Shell Pack w_ Chrome Hardware - Blue Sparkle - Walmart_com.jpeg">
+              </div>
+              <div class="product-details">
+                <div class="product-title">Pacific PDP</div>
+              </div>
+              <div class="product-price">6999.99</div>
+              <div class="product-quantity">
+                <input type="number" value="0" min="0">
+              </div>
+              <div class="product-line-price">0.00</div>
+            </div>
+      </div>
+    
+
+
+  <!-- Accessories Section -->
+  <div id="accessories" class="section">
+    <h2>Accessories</h2>
+    <div class="product" data-brand="Yamaha">
+      <div class="product-image">
+        <img src="C:\Users\BHUMIKA\Desktop\WT Project\image\SOOMFON USB Computer Microphone Condenser Podcast Microphone for PC, Recording, Gaming, Streaming, Upgraded Mic with Height Adjustable Stand, Headphone Output, Gain and Volume Knob.jpeg">
+      </div>
+      <div class="product-details">
+        <div class="product-title">Soomfon Microphone</div>
+      </div>
+      <div class="product-price">359.99</div>
+      <div class="product-quantity">
+        <input type="number" value="0" min="0">
+      </div>
+      <div class="product-line-price">0.00</div>
+    </div>
+
+    <div class="product" data-brand="Casio">
+      <div class="product-image">
+        <img src="C:\Users\BHUMIKA\Desktop\WT Project\image\JBL Quantum 910 Wireless Gaming Headset _ Nebraska Furniture Mart.jpeg">
+      </div>
+      <div class="product-details">
+        <div class="product-title">JBL Quantum 910</div>
+      </div>
+      <div class="product-price">279.99</div>
+      <div class="product-quantity">
+        <input type="number" value="0" min="0">
+      </div>
+      <div class="product-line-price">0.00</div>
+    </div>
+
+    <div class="product" data-brand="YAMAHA">
+        <div class="product-image">
+          <img src="C:\Users\BHUMIKA\Desktop\WT Project\image\XL E-mic Fitness Headset Microphone - Samson.jpeg">
+        </div>
+        <div class="product-details">
+          <div class="product-title">XLE Mic</div>
+        </div>
+        <div class="product-price">469.99</div>
+        <div class="product-quantity">
+          <input type="number" value="0" min="0">
+        </div>
+        <div class="product-line-price">0.00</div>
+      </div>
+</div>
+
+  <br><br>
+
+  <div class="shopping-cart"> 
+
+
+    <div class="totals">
+      <div class="totals-item">
+        <div>Subtotal</div>
+        <div id="cart-subtotal">0.00</div>
+      </div>
+      <div class="totals-item">
+        <div>Tax (5%)</div>
+        <div id="cart-tax">0.00</div>
+      </div>
+      <div class="totals-item">
+        <div>Shipping</div>
+        <div id="cart-shipping">15.00</div>
+      </div>
+      <div class="totals-item totals-item-total">
+        <div>Grand Total</div>
+        <div id="cart-total">0.00</div>
+      </div>
+    </div>
+
+    <button class="checkout" onclick="redirectToFinalBuy()">Checkout</button>
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+
+
+    /* Set rates + misc */
+    var taxRate = 0.05;
+    var shippingRate = 15.00;
+    var fadeTime = 300;
+  
+    /* Assign actions */
+    $('.product-quantity input').change(function () {
+      updateQuantity(this);
+    });
+  
+    /* Recalculate cart */
+    function recalculateCart() {
+      var subtotal = 0;
+  
+      /* Sum up row totals */
+      $('.product').each(function () {
+        var price = parseFloat($(this).find('.product-price').text());
+        var quantity = parseInt($(this).find('.product-quantity input').val());
+        var linePrice = price * quantity;
+        subtotal += linePrice;
+        $(this).find('.product-line-price').text(linePrice.toFixed(2));
+      });
+  
+      /* Calculate totals */
+      var tax = subtotal * taxRate;
+      var shipping = subtotal > 0 ? shippingRate : 0;
+      var total = subtotal + tax + shipping;
+  
+      /* Update totals display */
+      $('#cart-subtotal').text(subtotal.toFixed(2));
+      $('#cart-tax').text(tax.toFixed(2));
+      $('#cart-shipping').text(shipping.toFixed(2));
+      $('#cart-total').text(total.toFixed(2));
+  
+      if (total == 0) {
+        $('.checkout').fadeOut(fadeTime);
+      } else {
+        $('.checkout').fadeIn(fadeTime);
+      }
+    }
+  
+    /* Update quantity */
+    function updateQuantity(quantityInput) {
+      recalculateCart();
+    }
+  
+    /* Filter products based on the entered brand */
+    function filterProducts() {
+      var searchTerm = $('#brandSearch').val().toLowerCase();
+  
+      $('.product').each(function () {
+        var productBrand = $(this).data('brand').toLowerCase();
+        var matches = productBrand.includes(searchTerm);
+        $(this).toggle(matches);
+      });
+    }
+  
+    /* Redirect to finalbuy.html */
+    function redirectToFinalBuy() {
+      var grandTotal = $('#cart-total').text();
+      // You can customize the URL if needed
+      window.location.href = 'http://localhost/webtec/finalbuy.html?grandTotal=' + grandTotal;
+    }
+
+    // Scroll to section when clicked
+    $(document).on('click', 'a.scroll-section', function(event){
+      event.preventDefault();
+      var sectionId = $(this).attr("href");
+      $('html, body').animate({
+        scrollTop: $(sectionId).offset().top
+      }, 'slow');
+    });
+  </script>
+
+</body>
+</html>

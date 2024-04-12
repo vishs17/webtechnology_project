@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 20px;
+            margin: 0;
+        }
+
+        h2 {
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .video-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between; /* Distribute space between elements */
+            margin: 20px 0;
+        }
+
+        .video-container {
+            max-width: calc(50% - 20px); /* Set max width for two videos per row */
+            margin-bottom: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        video {
+            width: 100%;
+        }
+
+        .video-title {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #555;
+        }
+
+        .search-bar {
+            max-width: 300px;
+            margin: 20px auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #videoSearch {
+            flex-grow: 1;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 8px;
+        }
+
+        #searchButton {
+            padding: 8px 16px;
+            cursor: pointer;
+            background-color: #555;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        #searchButton:hover {
+            background-color: #e2c76c;
+        }
+
+        @media (max-width: 768px) {
+            .video-container {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Song Videos</h2>
+
+    <div class="search-bar">
+        <input type="text" id="videoSearch" oninput="filterVideos()" placeholder="Enter video title">
+        <button id="searchButton" onclick="filterVideos()">Search</button>
+    </div>
+
+    <div class="video-row" id="videoContainer">
+        <!-- Videos will be dynamically added here -->
+    </div>
+
+    <script>
+        function filterVideos() {
+            var input, filter, videoContainer, videos, title;
+            input = document.getElementById("videoSearch");
+            filter = input.value.toUpperCase();
+            videoContainer = document.getElementById("videoContainer");
+            videos = videoContainer.getElementsByClassName("video-container");
+
+            for (var i = 0; i < videos.length; i++) {
+                title = videos[i].getElementsByClassName("video-title")[0];
+                if (title.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    videos[i].style.display = "";
+                } else {
+                    videos[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+
+    <script>
+        // Add video elements dynamically
+        var videoData = [
+            { src: "C:/Users/BHUMIKA/Desktop/WT Project/image/Moh Moh Ke Dhaage _ Monali Thakur _ Karaoke with Lyrics.mp4", title: "Moh Moh ke Dhaage" },
+            { src: "C:/Users/BHUMIKA/Desktop/WT Project/image/Krishna Nee Begane Baro Karaoke by Murali Pariyadath.mp4", title: "Krishna Nee Begane Baro" },
+            { src: "C:/Users/BHUMIKA/Desktop/WT Project/image/Linkin Park - Numb (Karaoke).mp4", title: "Numb" },
+            { src: "C:/Users/BHUMIKA/Desktop/WT Project/image/Starboy ft. Daft Punk - The Weeknd Karaoke 【With Guide Melody】 Instrumental.mp4", title: "Starboy" },
+            { src: "C:/Users/BHUMIKA/Desktop/WT Project/image/The Kid LAROI & Justin Bieber - Stay (Karaoke Version).mp4", title: "Stay" },
+            { src: "C:/Users/BHUMIKA/Desktop/WT Project/image/Ed Sheeran - Shape Of You (Karaoke Version).mp4", title: "Shape of you" },
+        ];
+
+        var videoContainer = document.getElementById("videoContainer");
+
+        videoData.forEach(function (video) {
+            var videoDiv = document.createElement("div");
+            videoDiv.className = "video-container";
+
+            var videoElement = document.createElement("video");
+            videoElement.controls = true;
+            videoElement.innerHTML = "Your browser does not support the video tag.";
+            videoElement.src = video.src;
+
+            var titleElement = document.createElement("div");
+            titleElement.className = "video-title";
+            titleElement.innerHTML = video.title;
+
+            videoDiv.appendChild(videoElement);
+            videoDiv.appendChild(titleElement);
+            videoContainer.appendChild(videoDiv);
+        });
+    </script>
+
+</body>
+</html>

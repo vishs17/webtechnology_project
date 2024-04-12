@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Page - Easy Tutorials</title>
+    <link rel="stylesheet" href="subscription.css">
+    <style>
+        .logo {
+            max-width: 300px; /* Set the maximum width as per your requirement */
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="col-1">
+          <center>  <img src="C:\Users\BHUMIKA\Desktop\WT Project\image\Mm lettermark monogram circle round logo vector image on VectorStock.jpeg" class="logo"></center>
+           <center> <ul>
+                <li><img src="C:\Users\BHUMIKA\Desktop\WT Project\image\icon.png"> Unlimited song requests.</li>
+                <li><img src="C:\Users\BHUMIKA\Desktop\WT Project\image\icon.png"> unlimited songs of your language.</li>
+                <li><img src="C:\Users\BHUMIKA\Desktop\WT Project\image\icon.png"> Unlimited songs of your favourite genres.</li>
+               
+            </ul></center>
+        </div>
+
+        <div class="col-2">
+     <h2><img src="C:\Users\BHUMIKA\Desktop\WT Project\image\icon.png">Request your songs here-></h2>
+            <form onsubmit="saveSubscription(event)">
+               
+                </label>
+
+                <p>YOUR SONG</p>
+                <input type="text" id="name" placeholder="Enter Your Song" autocomplete="off" required>
+                <p>EMAIL ADDRESS</p>
+                <input type="email" id="email" placeholder="Enter Your Email Id" autocomplete="off" required>
+                <button type="submit">Request</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        async function saveSubscription(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+
+            if (!name || !email) {
+                alert("Please fill in all fields");
+                return;
+            }
+
+            const subscriptionData = {
+                name,
+                email,
+            };
+
+            const blob = new Blob([JSON.stringify(subscriptionData, null, 2)], { type: 'text/plain' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            
+            // Set the download name dynamically based on the user's name
+            a.download = `${name}_data.txt`;
+
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+
+            alert("Your song is successfully requested!!");
+            
+            // Redirect to homepage.html after clicking OK
+            window.location.href = 'homepage.html';
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+    form {
+      display: inline-block;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Login</h2>
+
+  <form id="loginForm" onsubmit="validateForm(); return false;">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required><br>
+
+    <input type="submit" value="Login">
+  </form>
+
+  <p id="errorMessage" style="color: red;"></p>
+
+  <script>
+    function validateForm() {
+      var email = document.getElementById('email').value;
+      var password = document.getElementById('password').value;
+
+      // Check if the password is "123"
+      if (password === '123','222') {
+        // Redirect to another page if the password is correct
+        window.location.href = 'success.html';
+      } else {
+        // Display an error message if the password is incorrect
+        document.getElementById('errorMessage').innerHTML = 'Incorrect password. Please try again.';
+      }
+    }
+  </script>
+
+</body>
+</html>

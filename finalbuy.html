@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment</title>
+  <style>
+    body {
+      padding: 20px;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    form {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin-top: 20px;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .credit-card-fields,
+    .online-payment-fields {
+      display: none;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 style="text-align: center; color: #333;">Payment</h1>
+
+  <form name="frmContact" class="needs-validation " method="post" action="connect.php">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" autocomplete="off" required>
+ `  
+    <label for="address">Home Address:</label>
+    <input type="text" id="address" name="address" required>
+
+
+
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email" required>
+
+    <label for="payment">Mode of Payment:</label>
+    <select id="payment" name="payment" onchange="handlePaymentChange()" required>
+      <option value="" disabled selected>Select Payment Option</option>
+      <option value="card">Credit Card</option>
+      <option value="GooglePay">Google pay</option>
+      <option value="cod">Cash on Deliver</option>
+     
+    </select>
+
+  
+
+    <label for="gt">Grand total</label> 
+    <input type="text" id="gt" name="gt" readonly>
+
+    <button type="submit">Confirm booking</button>
+  </form>
+
+  <script>
+   
+  
+    function handlePaymentChange() {
+      var paymentSelect = document.getElementById('payment');
+      var creditCardFields = document.querySelector('.credit-card-fields');
+      var onlinePaymentFields = document.querySelector('.online-payment-fields');
+  
+      if (paymentSelect.value === 'card') {
+        creditCardFields.style.display = 'block';
+        onlinePaymentFields.style.display = 'none';
+      } else if (paymentSelect.value === 'online') {
+        creditCardFields.style.display = 'none';
+        onlinePaymentFields.style.display = 'block';
+      } else {
+        creditCardFields.style.display = 'none';
+        onlinePaymentFields.style.display = 'none';
+      }
+    }
+  
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+  
+    var grandTotal = getQueryParam('grandTotal');
+    document.getElementById('gt').value = grandTotal;
+  </script>
+</body>
+</html>

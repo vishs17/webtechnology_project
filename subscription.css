@@ -1,0 +1,143 @@
+/* Reset CSS */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+/* Container Styles */
+.container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Column Styles */
+.col-1,
+.col-2 {
+    flex-basis: 50%;
+    flex-grow: 1;
+}
+
+/* Column 1 Styles */
+.col-1 {
+    background-image: linear-gradient(rgba(8, 9, 9, 0.8), rgba(9, 8, 0, 0.8)),
+        url('C:/Users/BHUMIKA/Desktop/WT Project/image/My fav songs _3.jpeg'); /* Fix the URL */
+    background-size: cover;
+    background-position: center;
+    min-height: inherit;
+    padding: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #fff;
+}
+
+.col-1 ul {
+    list-style: none;
+}
+
+.col-1 ul li {
+    display: flex;
+    align-items: center;
+    margin: 12px 0;
+}
+
+.col-1 ul li img {
+    width: 20px;
+    margin-right: 15px;
+}
+
+/* Column 2 Styles */
+.col-2 {
+    flex-basis: 50%;
+    flex-grow: 1;
+    padding: 50px 80px;
+}
+
+.col-2 h2 {
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    margin-top: 0; /* Remove the negative margin-top */
+}
+
+.col-2 h2 img {
+    width: 20px; /* Reduced image size */
+    margin-right: 10px;
+}
+
+/* Form Styles */
+form {
+    width: 100%; /* Adjust the width */
+    color: #333;
+    font-weight: 500;
+    font-size: 14px;
+    max-width: 400px; /* Set a max-width */
+    margin: 0 auto; /* Center the form */
+}
+
+label {
+    display: block;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 0 20px 5px rgba(9, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 500;
+    color: #999;
+    cursor: pointer;
+    text-align: left; /* Align label text to the left */
+}
+
+label span {
+    flex: 1;
+    font-size: 18px;
+    margin-left: 15px;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+}
+
+label span small {
+    font-size: 18px;
+}
+
+input[type="radio"]:checked+span,
+input[type="radio"]:checked+span small {
+    color: #ff004f;
+}
+
+input[type="text"],
+input[type="email"] {
+    width: 100%;
+    background: transparent;
+    padding: 7px 10px;
+    outline: none;
+    border: 1px solid #333;
+    border-radius: 4px;
+    margin: 12px 0;
+}
+
+form button {
+    background: #ff004f;
+    color: #fff;
+    font-size: 16px;
+    padding: 12px 50px;
+    margin: 20px 0;
+    border: 0;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+form button:hover {
+    transform: translateY(-5px);
+}
